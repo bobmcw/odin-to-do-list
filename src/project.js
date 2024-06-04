@@ -20,8 +20,7 @@ const renderProject = (project) => {
     const taskSection = document.querySelector(".content");
     taskSection.innerHTML = "";
     project.getTasks.forEach(task => {
-       console.log(task.formaredTask)
-       taskSection.appendChild(task.formaredTask) 
+       taskSection.appendChild(task.formatedTask) 
     });
 }
 export default function createProject(name){

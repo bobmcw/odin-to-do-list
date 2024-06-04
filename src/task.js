@@ -20,8 +20,8 @@ class Task {
         discription.classList.add("taskDiscription");
         const dueDate = Object.assign(document.createElement("h5"),{innerText: this.dueDate});
         const priority = Object.assign(document.createElement("h5"),{innerText: this.priority});
-        header.append(dueDate,priority)
-        formated.append(name,header,discription)
+        header.append(dueDate,priority);
+        formated.append(name,header,discription);
         return formated;
     }
 }
