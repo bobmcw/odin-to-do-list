@@ -1,21 +1,37 @@
-class Project{
+export class Project{
     constructor(name){
         this.name = name;
-        this.tasks = []
+        this._tasks = [];
     }
-   set newTask(Task){
-    this.tasks.append(Task);
+   set newTask(task){
+    this._tasks.push(task);
    }
+   get getTasks(){
+    return this._tasks;
+   } 
 }
-const newProject = () =>{
-    return new Project(prompt("name"));
-
+const newProject = (name) =>{
+    return new Project(name);
 }
-export default function createProject(){
-    const project = newProject();
+export function addTaskToProject(project,task){
+    project.newTask = task;
+}
+const renderProject = (project) => {
+    const taskSection = document.querySelector(".content");
+    taskSection.innerHTML = "";
+    project.getTasks.forEach(task => {
+       console.log(task.formaredTask)
+       taskSection.appendChild(task.formaredTask) 
+    });
+}
+export default function createProject(name){
+    const project = newProject(name);
     const projectTab = document.querySelector(".sidePanel");
     const linkToProject = Object.assign(document.createElement("button"),{innerText: project.name});
+    linkToProject.addEventListener("click",() => {
+        renderProject(project);
+    });
     projectTab.appendChild(linkToProject);
-
+    return project
 
 }

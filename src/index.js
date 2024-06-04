@@ -1,4 +1,4 @@
-import createProject from './project';
+import createProject, { addTaskToProject } from './project';
 import './style.css'
 import './task'
 import createTask from './task';
@@ -8,4 +8,5 @@ projectButton.addEventListener("click", () =>{
     createProject();
 });
 const body = document.querySelector(".content");
-body.appendChild(createTask("hello","disc","2022","urgent"))
+const exampleProject = createProject("example");
+addTaskToProject(exampleProject,createTask("hello","disc","2022","urgent"));

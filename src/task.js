@@ -25,8 +25,7 @@ class Task {
         return formated;
     }
 }
-
 export default function createTask(name,discription,dueDate,priority){
     const task = new Task(name,discription,dueDate,priority);
-    return task.formatedTask;
+    return task;
 }

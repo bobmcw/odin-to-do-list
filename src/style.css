@@ -30,3 +30,18 @@ body{
 .task{
     border: 1px solid black;
 }
+.addTask{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    right: 3%;
+    bottom: 3%;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    font-size: larger;
+    background-color: #7AB2B2;
+    color: #EEF7FF;
+    text-align: center;
+}
