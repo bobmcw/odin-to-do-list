@@ -15,12 +15,13 @@ class Task {
         const header = document.createElement("div") 
         header.classList.add("taskheader");
 
-        const name = Object.assign(document.createElement("h3"),{innerText: this.name});
+        const name = Object.assign(document.createElement("h2"),{innerText: this.name});
         const discription = Object.assign(document.createElement("p"),{innerText: this.discription});
-        const dueDate = Object.assign(document.createElement("h4"),{innerText: this.dueDate});
-        const priority = Object.assign(document.createElement("h4"),{innerText: this.priority});
-        header.append(name,dueDate,priority)
-        formated.append(header,discription)
+        discription.classList.add("taskDiscription");
+        const dueDate = Object.assign(document.createElement("h5"),{innerText: this.dueDate});
+        const priority = Object.assign(document.createElement("h5"),{innerText: this.priority});
+        header.append(dueDate,priority)
+        formated.append(name,header,discription)
         return formated;
     }
 }
