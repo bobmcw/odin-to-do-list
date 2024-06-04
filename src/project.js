@@ -1,3 +1,5 @@
+import createTask from "./task";
+
 export class Project{
     constructor(name){
         this.name = name;
@@ -9,6 +11,18 @@ export class Project{
    get getTasks(){
     return this._tasks;
    } 
+get addTaskButton (){
+    const button = document.createElement("button");
+    button.classList.add("addTask");
+    const text = document.createElement("h2");
+    text.innerText = "+";
+    button.appendChild(text);
+    button.addEventListener("click", () => {
+        this.newTask = createTask("example","task created from button","2024","yes");
+        renderProject(this);
+    });
+    return button;
+}
 }
 const newProject = (name) =>{
     return new Project(name);
@@ -22,6 +36,7 @@ const renderProject = (project) => {
     project.getTasks.forEach(task => {
        taskSection.appendChild(task.formatedTask) 
     });
+    taskSection.appendChild(project.addTaskButton)
 }
 export default function createProject(name){
     const project = newProject(name);
