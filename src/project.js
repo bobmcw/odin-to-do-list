@@ -1,3 +1,4 @@
+import saveProjectToLocalStorage from "./localStorage";
 import createTask from "./task";
 
 export class Project{
@@ -6,11 +7,15 @@ export class Project{
         this._tasks = [];
     }
    set newTask(task){
+    saveProjectToLocalStorage(this)
     this._tasks.push(task);
    }
    get getTasks(){
     return this._tasks;
    } 
+   get getName(){
+    return this.name;
+   }
 get addTaskButton (){
     const button = document.createElement("button");
     button.classList.add("addTask");
@@ -24,13 +29,15 @@ get addTaskButton (){
     return button;
 }
 }
-const newProject = (name) =>{
-    return new Project(name);
+export const newProject = (name) =>{
+    const project = new Project(name);
+    saveProjectToLocalStorage(project);
+    return project;
 }
 export function addTaskToProject(project,task){
     project.newTask = task;
 }
-const renderProject = (project) => {
+export const renderProject = (project) => {
     const taskSection = document.querySelector(".content");
     taskSection.innerHTML = "";
     project.getTasks.forEach(task => {
