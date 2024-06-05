@@ -7,8 +7,8 @@ export class Project{
         this._tasks = [];
     }
    set newTask(task){
-    saveProjectToLocalStorage(this)
     this._tasks.push(task);
+    saveProjectToLocalStorage(this)
    }
    get getTasks(){
     return this._tasks;

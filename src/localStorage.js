@@ -13,11 +13,11 @@ export function rednerFromLocalStorage(){
         Object.keys(localStorage).forEach(function(key){
             const projectInfo = JSON.parse(localStorage.getItem(key));
             if (projectInfo.name == undefined) {projectInfo.name = "undefined"}
-            console.log(projectInfo);
+            const tasks = projectInfo.tasks;
             const project = createProject(projectInfo.name);
-            projectInfo.tasks.forEach((task) =>{
-                console.log(projectInfo.tasks)
-                addTaskToProject(project,createTask(task[0],task[1],task[2],task[3]));
+            tasks.forEach(task =>{
+                console.log(task)
+                addTaskToProject(project,createTask(task["name"],task["discription"],task["dueDate"],task["priority"]));
             })
         });
     }
