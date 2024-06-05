@@ -8,11 +8,15 @@ export class Project{
     }
    set newTask(task){
     this._tasks.push(task);
+    console.log(this._tasks.indexOf(task));
     saveProjectToLocalStorage(this)
    }
    get getTasks(){
     return this._tasks;
    } 
+   set removeTask(index){
+    this._tasks.splice(index,1);
+   }
    get getName(){
     return this.name;
    }
@@ -41,7 +45,16 @@ export const renderProject = (project) => {
     const taskSection = document.querySelector(".content");
     taskSection.innerHTML = "";
     project.getTasks.forEach(task => {
-       taskSection.appendChild(task.formatedTask) 
+       const index = project.getTasks.length-1;
+       const formated = task.formatedTask;
+       const delbutton = document.createElement("button");
+       delbutton.innerText = "delete";
+       delbutton.addEventListener("click",() => {
+        project.removeTask = index;
+        renderProject(project);
+       })
+       formated.appendChild(delbutton);
+       taskSection.appendChild(formated) ;
     });
     taskSection.appendChild(project.addTaskButton)
 }
