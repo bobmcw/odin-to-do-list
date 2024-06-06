@@ -1,4 +1,4 @@
-import saveProjectToLocalStorage from "./localStorage";
+import saveProjectToLocalStorage, { rednerFromLocalStorage } from "./localStorage";
 import createTask from "./task";
 
 export class Project{
@@ -42,8 +42,15 @@ export function addTaskToProject(project,task){
     project.newTask = task;
 }
 export const renderProject = (project) => {
+    const removeProjectButton = document.createElement("button");
     const taskSection = document.querySelector(".content");
+    removeProjectButton.innerText = "remove this project";
+    removeProjectButton.addEventListener("click", () =>{
+        localStorage.removeItem(project.getName);
+        location.reload();
+    });
     taskSection.innerHTML = "";
+    taskSection.appendChild(removeProjectButton)
     let index = 0
     project.getTasks.forEach(task => {
        const formated = task.formatedTask;
