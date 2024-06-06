@@ -1,5 +1,6 @@
 import saveProjectToLocalStorage, { rednerFromLocalStorage } from "./localStorage";
 import createTask from "./task";
+import { Wizard } from "./wizard";
 
 export class Project{
     constructor(name){
@@ -27,7 +28,9 @@ get addTaskButton (){
     text.innerText = "+";
     button.appendChild(text);
     button.addEventListener("click", () => {
-        this.newTask = createTask(prompt("task name"),"task created from button","2024","yes");
+        const wizard = new Wizard;
+        wizard.displayWizard;
+        //this.newTask = createTask(prompt("task name"),"task created from button","2024","yes");
         renderProject(this);
     });
     return button;
@@ -47,7 +50,8 @@ export const renderProject = (project) => {
     removeProjectButton.innerText = "remove this project";
     removeProjectButton.addEventListener("click", () =>{
         localStorage.removeItem(project.getName);
-        location.reload();
+        rednerFromLocalStorage();
+        location.reload()
     });
     taskSection.innerHTML = "";
     taskSection.appendChild(removeProjectButton)

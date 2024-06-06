@@ -48,3 +48,11 @@ body{
 .hidden{
     display: none;
 }
+.wizard{
+    position: absolute;
+    top: 30%;
+    left: 30%;
+    width: 50vw;
+    aspect-ratio: 3/1;
+    background-color: red;
+}
