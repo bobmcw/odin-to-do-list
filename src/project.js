@@ -27,7 +27,7 @@ get addTaskButton (){
     text.innerText = "+";
     button.appendChild(text);
     button.addEventListener("click", () => {
-        this.newTask = createTask("example","task created from button","2024","yes");
+        this.newTask = createTask(prompt("task name"),"task created from button","2024","yes");
         renderProject(this);
     });
     return button;
@@ -44,14 +44,17 @@ export function addTaskToProject(project,task){
 export const renderProject = (project) => {
     const taskSection = document.querySelector(".content");
     taskSection.innerHTML = "";
+    let index = 0
     project.getTasks.forEach(task => {
-       const index = project.getTasks.length-1;
        const formated = task.formatedTask;
+       formated.id = index;
+       index+=1;
        const delbutton = document.createElement("button");
        delbutton.innerText = "delete";
        delbutton.addEventListener("click",() => {
-        project.removeTask = index;
+        project.removeTask = formated.id;
         renderProject(project);
+        saveProjectToLocalStorage(project)
        })
        formated.appendChild(delbutton);
        taskSection.appendChild(formated) ;

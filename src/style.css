@@ -45,3 +45,6 @@ body{
     color: #EEF7FF;
     text-align: center;
 }
+.hidden{
+    display: none;
+}

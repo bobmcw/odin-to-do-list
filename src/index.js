@@ -6,7 +6,7 @@ import createTask from './task';
 
 const projectButton = document.querySelector("#newProject");
 projectButton.addEventListener("click", () =>{
-    createProject();
+    createProject(prompt("project name"));
 });
 rednerFromLocalStorage()
 const body = document.querySelector(".content");
