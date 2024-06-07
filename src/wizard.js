@@ -1,11 +1,20 @@
+import createTask from "./task";
+import { renderProject } from "./project";
+
 export class Wizard{
-    get displayWizard(){
+    set displayWizard(project){
         const body = document.querySelector("html");
         const wizard = document.createElement("div");
         wizard.classList.add("wizard");
         const hideButton = document.createElement("button");
         hideButton.innerText = "hide";
         hideButton.addEventListener("click",()=>{
+            const name = document.querySelector("input[name='taskName']").value;
+            const discription = document.querySelector("input[name='taskDiscription']").value;
+            const dueDate = document.querySelector("input[name='taskDueDate']").value;
+            const urgency = document.querySelector("input[name='urgency']").value;
+            project.newTask = createTask(name,discription,dueDate,urgency);
+            renderProject(project);
             this.hideWizard;
         })
         const taskName = document.createElement("input")
@@ -15,7 +24,7 @@ export class Wizard{
         nameLabel.innerText = "task name";
 
         const taskDiscription = document.createElement("input")
-        taskName.name = "taskDiscription";
+        taskDiscription.name = "taskDiscription";
         const discriptionLabel = document.createElement("label");
         discriptionLabel.for = "taskDiscription";
         discriptionLabel.innerText = "discription";

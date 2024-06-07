@@ -1,5 +1,4 @@
 import saveProjectToLocalStorage, { rednerFromLocalStorage } from "./localStorage";
-import createTask from "./task";
 import { Wizard } from "./wizard";
 
 export class Project{
@@ -29,7 +28,7 @@ get addTaskButton (){
     button.appendChild(text);
     button.addEventListener("click", () => {
         const wizard = new Wizard;
-        wizard.displayWizard;
+        wizard.displayWizard = this;
         //this.newTask = createTask(prompt("task name"),"task created from button","2024","yes");
         renderProject(this);
     });
