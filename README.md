@@ -5,3 +5,4 @@ the project mostly works but there are many improvements to make
  - add styling
  - editing tasks
  - a wizard for creating projects
+ - add an example project
