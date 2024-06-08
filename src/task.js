@@ -18,9 +18,14 @@ class Task {
         const name = Object.assign(document.createElement("h2"),{innerText: this.name});
         const discription = Object.assign(document.createElement("p"),{innerText: this.discription});
         discription.classList.add("taskDiscription");
-        const dueDate = Object.assign(document.createElement("h5"),{innerText: this.dueDate});
-        const priority = Object.assign(document.createElement("h5"),{innerText: this.priority});
-        header.append(dueDate,priority);
+        const dueDate = Object.assign(document.createElement("h5"),{innerText: this.dueDate})
+        if (this.priority == "urgent"){
+            formated.classList.add("urgent");
+        }
+        else if (this.priority == "not urgent"){
+            formated.classList.add("notUrgent");
+        }
+        header.append(dueDate);
         formated.append(name,header,discription);
         return formated;
     }

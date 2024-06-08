@@ -3,17 +3,25 @@ import { renderProject } from "./project";
 
 export class Wizard{
     set displayWizard(project){
+        const xbutton = document.createElement("button");
+        xbutton.classList.add("xbutton");
+        xbutton.innerText = "X"
+        xbutton.addEventListener("click",() => {
+            //this.hideWizard
+        })
         const body = document.querySelector("html");
         const wizard = document.createElement("div");
+        wizard.appendChild(xbutton);
         wizard.classList.add("wizard");
         const hideButton = document.createElement("button");
         hideButton.innerText = "confirm";
         hideButton.addEventListener("click",()=>{
-            if(name && discription && dueDate && urgency){    
             const name = document.querySelector("input[name='taskName']").value;
             const discription = document.querySelector("input[name='taskDiscription']").value;
             const dueDate = document.querySelector("input[name='taskDueDate']").value;
             const urgency = document.querySelector("input[name='urgency']:checked").value;
+            if (name != "" && discription != "" && dueDate != "" && urgency != null){
+                console.log(name)
             project.newTask = createTask(name,discription,dueDate,urgency);
             renderProject(project);
             this.hideWizard;
@@ -50,6 +58,7 @@ export class Wizard{
         notUrgent.name = "urgency";
         notUrgent.id = "notUrgent";
         notUrgent.value = "not urgent";
+        notUrgent.checked = true;
         const urgentLabel = document.createElement("label");
         urgentLabel.for = "urgent";
         urgentLabel.innerText = "urgent";

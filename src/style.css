@@ -12,6 +12,14 @@ body{
     grid-template-columns: 1fr 9fr;
     grid-template-rows: 1fr 9fr;
 }
+.sidePanel{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.sidePanel > *{
+    margin: 5px;
+}
 .header{
     display: flex;
     justify-content: center;
@@ -28,7 +36,14 @@ body{
     margin-left: 4%;
 }
 .task{
+    padding-left: 1rem;
     border: 1px solid black;
+}
+.urgent{
+    box-shadow: inset 1rem 0 red;
+}
+.notUrgent{
+    box-shadow: inset 1rem 0 lightblue;
 }
 .addTask{
     display: flex;
@@ -57,6 +72,7 @@ body{
     border: 2px solid black;
     border-radius: 18px;
     padding: 1%;
+    padding-top: 0;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -72,4 +88,12 @@ label{
 }
 .radioContainer >*{
     padding: 5px;
+}
+.xbutton{
+    align-self: flex-start;
+    border: none;
+    font-size: large;
+}
+.xbutton:hover{
+    color: gray;
 }
