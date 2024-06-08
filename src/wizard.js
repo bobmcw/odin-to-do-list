@@ -9,6 +9,7 @@ export class Wizard{
         const hideButton = document.createElement("button");
         hideButton.innerText = "confirm";
         hideButton.addEventListener("click",()=>{
+            if(name && discription && dueDate && urgency){    
             const name = document.querySelector("input[name='taskName']").value;
             const discription = document.querySelector("input[name='taskDiscription']").value;
             const dueDate = document.querySelector("input[name='taskDueDate']").value;
@@ -16,6 +17,7 @@ export class Wizard{
             project.newTask = createTask(name,discription,dueDate,urgency);
             renderProject(project);
             this.hideWizard;
+            }
         })
         const taskName = document.createElement("input")
         taskName.name = "taskName";
